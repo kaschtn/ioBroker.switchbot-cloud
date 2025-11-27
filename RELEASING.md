@@ -288,7 +288,7 @@ git push origin --tags
 
 ### Step 4: Monitor GitHub Actions
 
-1. Go to: https://github.com/kaschtn/ioBroker.switchbot/actions
+1. Go to: https://github.com/kaschtn/ioBroker.switchbot-cloud/actions
 2. Watch the "Test and Release" workflow
 3. Verify all jobs complete successfully:
    - ✅ check-and-lint
@@ -301,18 +301,18 @@ git push origin --tags
 
 ```bash
 # Check NPM package
-npm view iobroker.switchbot
+npm view iobroker.switchbot-cloud
 
 # Check specific version
-npm view iobroker.switchbot@0.9.0
+npm view iobroker.switchbot-cloud@0.9.0
 
 # Visit NPM website
-# https://www.npmjs.com/package/iobroker.switchbot
+# https://www.npmjs.com/package/iobroker.switchbot-cloud
 ```
 
 ### Step 6: Verify GitHub Release
 
-1. Go to: https://github.com/kaschtn/ioBroker.switchbot/releases
+1. Go to: https://github.com/kaschtn/ioBroker.switchbot-cloud/releases
 2. Verify release was created with:
    - Correct version tag (e.g., `v0.9.0`)
    - Release notes from CHANGELOG
@@ -345,8 +345,8 @@ For the adapter to appear in ioBroker's official adapter list:
    ```json
    {
      "switchbot": {
-       "meta": "https://raw.githubusercontent.com/kaschtn/ioBroker.switchbot/main/io-package.json",
-       "icon": "https://raw.githubusercontent.com/kaschtn/ioBroker.switchbot/main/admin/switchbot.png",
+       "meta": "https://raw.githubusercontent.com/kaschtn/ioBroker.switchbot-cloud/main/io-package.json",
+       "icon": "https://raw.githubusercontent.com/kaschtn/ioBroker.switchbot-cloud/main/admin/switchbot.png",
        "type": "hardware"
      }
    }
@@ -355,7 +355,7 @@ For the adapter to appear in ioBroker's official adapter list:
 4. **Commit and push:**
    ```bash
    git add sources-dist.json
-   git commit -m "Add ioBroker.switchbot adapter"
+   git commit -m "Add ioBroker.switchbot-cloud adapter"
    git push origin main
    ```
 
@@ -498,7 +498,7 @@ If a release has critical issues:
 
 ```bash
 # Deprecate the bad version
-npm deprecate iobroker.switchbot@0.9.1 "Critical bug, please use 0.9.2"
+npm deprecate iobroker.switchbot-cloud@0.9.1 "Critical bug, please use 0.9.2"
 
 # Release fixed version
 npm run release-patch
@@ -510,10 +510,10 @@ npm run release-patch
 
 ```bash
 # Unpublish specific version
-npm unpublish iobroker.switchbot@0.9.1
+npm unpublish iobroker.switchbot-cloud@0.9.1
 
 # NEVER unpublish all versions
-# npm unpublish iobroker.switchbot --force  # DON'T DO THIS
+# npm unpublish iobroker.switchbot-cloud --force  # DON'T DO THIS
 ```
 
 ### 3. Revert Git Tag

@@ -83,5 +83,5 @@ jobs:
           # Then uncomment and customize the following block:
           # sentry: true
           # sentry-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          # sentry-project: "iobroker-switchbot"
-          # sentry-version-prefix: "iobroker.switchbot"
+          # sentry-project: "iobroker-switchbot-cloud"
+          # sentry-version-prefix: "iobroker.switchbot-cloud"

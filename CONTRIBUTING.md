@@ -1,6 +1,6 @@
-# Contributing to ioBroker.switchbot
+# Contributing to ioBroker.switchbot-cloud
 
-First off, thank you for considering contributing to ioBroker.switchbot! It's people like you that make this adapter better for everyone.
+First off, thank you for considering contributing to ioBroker.switchbot-cloud! It's people like you that make this adapter better for everyone.
 
 ## Code of Conduct
 
@@ -50,7 +50,7 @@ To add support for a new SwitchBot device:
 ## Development Setup
 
 1. Fork the repository
-2. Clone your fork: `git clone https://github.com/YOUR_USERNAME/ioBroker.switchbot.git`
+2. Clone your fork: `git clone https://github.com/YOUR_USERNAME/ioBroker.switchbot-cloud.git`
 3. Install dependencies: `npm install`
 4. Make your changes
 5. Run tests: `npm test`

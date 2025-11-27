@@ -1,13 +1,13 @@
-# ioBroker.switchbot
+# ioBroker.switchbot-cloud
 
-[![NPM version](https://img.shields.io/npm/v/iobroker.switchbot.svg)](https://www.npmjs.com/package/iobroker.switchbot)
-[![Downloads](https://img.shields.io/npm/dm/iobroker.switchbot.svg)](https://www.npmjs.com/package/iobroker.switchbot)
+[![NPM version](https://img.shields.io/npm/v/iobroker.switchbot-cloud.svg)](https://www.npmjs.com/package/iobroker.switchbot-cloud)
+[![Downloads](https://img.shields.io/npm/dm/iobroker.switchbot-cloud.svg)](https://www.npmjs.com/package/iobroker.switchbot-cloud)
 ![Number of Installations](https://iobroker.live/badges/switchbot-installed.svg)
 ![Current version in stable repository](https://iobroker.live/badges/switchbot-stable.svg)
 
-[![NPM](https://nodei.co/npm/iobroker.switchbot.png?downloads=true)](https://nodei.co/npm/iobroker.switchbot/)
+[![NPM](https://nodei.co/npm/iobroker.switchbot-cloud.png?downloads=true)](https://nodei.co/npm/iobroker.switchbot-cloud/)
 
-**Tests:** [![Test and Release](https://github.com/ioBroker/iobroker.switchbot/workflows/Test%20and%20Release/badge.svg)](https://github.com/ioBroker/iobroker.switchbot/actions/)
+**Tests:** [![Test and Release](https://github.com/kaschtn/ioBroker.switchbot-cloud/workflows/Test%20and%20Release/badge.svg)](https://github.com/kaschtn/ioBroker.switchbot-cloud/actions/)
 
 ## SwitchBot adapter for ioBroker
 

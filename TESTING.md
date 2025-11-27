@@ -222,13 +222,13 @@ Warnings: 0
 1. Open ioBroker Admin
 2. Navigate to "Adapter" tab
 3. Click GitHub icon (Octocat)
-4. Enter: `kaschtn/ioBroker.switchbot`
+4. Enter: `kaschtn/ioBroker.switchbot-cloud`
 5. Click Install
 
 **Via Command Line:**
 ```bash
 cd /opt/iobroker
-npm install kaschtn/ioBroker.switchbot
+npm install kaschtn/ioBroker.switchbot-cloud
 iobroker upload switchbot
 iobroker add switchbot
 ```
@@ -252,7 +252,7 @@ npm link
 **On ioBroker Server:**
 ```bash
 cd /opt/iobroker
-sudo npm link iobroker.switchbot
+sudo npm link iobroker.switchbot-cloud
 iobroker upload switchbot
 iobroker add switchbot
 ```
@@ -280,7 +280,7 @@ scp iobroker.switchbot-0.9.0.tgz user@iobroker:/tmp/
 # Install
 ssh user@iobroker
 cd /opt/iobroker
-sudo npm install /tmp/iobroker.switchbot-0.9.0.tgz
+sudo npm install /tmp/iobroker.switchbot-cloud-0.9.0.tgz
 iobroker upload switchbot
 iobroker add switchbot
 ```
