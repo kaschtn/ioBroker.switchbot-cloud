@@ -145,6 +145,8 @@ class SwitchBot extends utils.Adapter {
 
     /**
      * Test API connection
+     * @returns {Promise<void>}
+     * @throws {Error} If connection fails
      */
     async testConnection() {
         try {
@@ -180,6 +182,8 @@ class SwitchBot extends utils.Adapter {
 
     /**
      * Start polling for device status updates
+     * Starts an interval timer to periodically poll all devices
+     * @returns {void}
      */
     startPolling() {
         const interval = this.config.pollInterval || 60000; // Default 60 seconds
@@ -193,6 +197,8 @@ class SwitchBot extends utils.Adapter {
 
     /**
      * Poll all devices for status updates
+     * Retrieves current status from all discovered devices
+     * @returns {Promise<void>}
      */
     async pollDevices() {
         // Skip if adapter is shutting down
