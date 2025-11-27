@@ -24,10 +24,10 @@ describe('SwitchBot Adapter', function() {
 
     it('Should start the adapter without errors', async function() {
         this.timeout(10000);
-        
+
         // Start the adapter
         await harness.startAdapterAndWait();
-        
+
         // Check that adapter is running
         const state = harness.states.getState('switchbot.0.info.connection');
         expect(state).to.exist;
@@ -36,14 +36,14 @@ describe('SwitchBot Adapter', function() {
 
     it('Should create info objects', async function() {
         this.timeout(10000);
-        
+
         await harness.startAdapterAndWait();
-        
+
         // Check that info channel exists
         const infoChannel = harness.objects.getObject('switchbot.0.info');
         expect(infoChannel).to.exist;
         expect(infoChannel.type).to.equal('channel');
-        
+
         // Check that connection state exists
         const connectionState = harness.objects.getObject('switchbot.0.info.connection');
         expect(connectionState).to.exist;
