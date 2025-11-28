@@ -1,6 +1,6 @@
-# Testing Guide for ioBroker SwitchBot Adapter
+# Testing Guide for ioBroker SwitchBot Cloud Adapter
 
-This guide covers all testing methods for the SwitchBot adapter, from automated unit tests to manual integration testing in a real ioBroker environment.
+This guide covers all testing methods for the SwitchBot Cloud adapter, from automated unit tests to manual integration testing in a real ioBroker environment.
 
 ---
 
@@ -139,11 +139,11 @@ The manual test script performs these checks:
 
 2. **Adapter Alive Status**
    - Checks if adapter instance is running
-   - Validates `switchbot.0.info.alive` state
+   - Validates `switchbot-cloud.0.info.alive` state
 
 3. **SwitchBot API Connection**
    - Verifies adapter successfully connected to SwitchBot Cloud
-   - Checks `switchbot.0.info.connection` state
+   - Checks `switchbot-cloud.0.info.connection` state
 
 4. **Device Discovery**
    - Counts discovered devices
@@ -175,7 +175,7 @@ The manual test script performs these checks:
 ============================================================
   SwitchBot Adapter Integration Test Suite
 ============================================================
-ℹ️  Testing adapter instance: switchbot.0
+ℹ️  Testing adapter instance: switchbot-cloud.0
 ℹ️  ioBroker host: localhost:8081
 
 ============================================================
@@ -229,15 +229,15 @@ Warnings: 0
 ```bash
 cd /opt/iobroker
 npm install kaschtn/ioBroker.switchbot-cloud
-iobroker upload switchbot
-iobroker add switchbot
+iobroker upload switchbot-cloud
+iobroker add switchbot-cloud
 ```
 
 #### Method 2: Install from NPM (After Publication)
 
 ```bash
 cd /opt/iobroker
-iobroker add switchbot
+iobroker add switchbot-cloud
 ```
 
 #### Method 3: Local Development with npm link
@@ -253,14 +253,14 @@ npm link
 ```bash
 cd /opt/iobroker
 sudo npm link iobroker.switchbot-cloud
-iobroker upload switchbot
-iobroker add switchbot
+iobroker upload switchbot-cloud
+iobroker add switchbot-cloud
 ```
 
 **Update after changes:**
 ```bash
-iobroker upload switchbot
-iobroker restart switchbot
+iobroker upload switchbot-cloud
+iobroker restart switchbot-cloud
 ```
 
 #### Method 4: Manual Package Installation
@@ -269,20 +269,20 @@ iobroker restart switchbot
 ```bash
 cd /path/to/iobroker-switchbot
 npm pack
-# Creates: iobroker.switchbot-0.9.0.tgz
+# Creates: iobroker.switchbot-cloud-0.9.0.tgz
 ```
 
 **Install on Server:**
 ```bash
 # Copy to server
-scp iobroker.switchbot-0.9.0.tgz user@iobroker:/tmp/
+scp iobroker.switchbot-cloud-0.9.0.tgz user@iobroker:/tmp/
 
 # Install
 ssh user@iobroker
 cd /opt/iobroker
 sudo npm install /tmp/iobroker.switchbot-cloud-0.9.0.tgz
-iobroker upload switchbot
-iobroker add switchbot
+iobroker upload switchbot-cloud
+iobroker add switchbot-cloud
 ```
 
 ### Configuration Testing
@@ -307,10 +307,10 @@ After installation, test the configuration:
 4. **Verify Device Discovery:**
    ```bash
    # List all created objects
-   iobroker object list switchbot.0.*
+   iobroker object list switchbot-cloud.0.*
    
    # Check specific device
-   iobroker state get switchbot.0.DEVICE001.deviceName
+   iobroker state get switchbot-cloud.0.DEVICE001.deviceName
    ```
 
 ### Live Monitoring
@@ -319,11 +319,11 @@ After installation, test the configuration:
 # Watch all logs in real-time
 iobroker logs --watch
 
-# Watch only SwitchBot adapter logs
-iobroker logs switchbot --watch
+# Watch only SwitchBot Cloud adapter logs
+iobroker logs switchbot-cloud --watch
 
 # Check adapter status
-iobroker status switchbot
+iobroker status switchbot-cloud
 
 # List all instances
 iobroker list instances
@@ -334,14 +334,14 @@ iobroker list instances
 Enable debug logging for detailed troubleshooting:
 
 1. **Via Admin Interface:**
-   - Go to: Instances → switchbot → Configuration
+   - Go to: Instances → switchbot-cloud → Configuration
    - Set Log Level: `debug`
    - Save and restart
 
 2. **Via Command Line:**
    ```bash
-   iobroker set switchbot.0 --logLevel debug
-   iobroker restart switchbot
+   iobroker set switchbot-cloud.0 --logLevel debug
+   iobroker restart switchbot-cloud
    ```
 
 ---
@@ -362,7 +362,7 @@ The adapter uses GitHub Actions for automated testing:
 - Pull requests
 
 **Jobs:**
-- **check-and-lint:** Quick validation and linting
+- **check-and-lint:** Quick validation and linting (Node 18.x on Ubuntu)
 - **adapter-tests:** Full test suite on multiple Node.js versions and OS
 - **deploy:** Automatic NPM publishing on tagged releases
 
@@ -370,10 +370,25 @@ The adapter uses GitHub Actions for automated testing:
 - Node.js: 18.x, 20.x, 22.x
 - OS: Ubuntu 22.04, Windows, macOS
 
+**Note:** This adapter is pure JavaScript and requires no build step.
+
 **Skipping CI:**
 Add `[skip ci]` to commit message to skip CI runs.
 
-#### 2. Pull Request Checks
+#### 2. Test Develop Workflow
+
+**File:** `.github/workflows/test-develop.yml`
+
+**Triggers:**
+- Push to `develop` branch
+
+**Jobs:**
+- **check-and-lint:** Quick validation and linting (Node 18.x on Ubuntu)
+- **adapter-tests:** Fast test on Node 22.x only (Ubuntu)
+
+**Purpose:** Provides quick feedback on develop branch without running full matrix.
+
+#### 3. Pull Request Checks
 
 **File:** `.github/workflows/pr-checks.yml`
 
@@ -439,13 +454,13 @@ IOBROKER_HOST=localhost IOBROKER_PORT=8081 node test/manual-integration.js
 **Problem:** Adapter not found
 ```bash
 # Re-upload adapter
-iobroker upload switchbot
+iobroker upload switchbot-cloud
 
 # Force add adapter
-iobroker add switchbot --force
+iobroker add switchbot-cloud --force
 
 # Check adapter list
-iobroker list adapters | grep switchbot
+iobroker list adapters | grep switchbot-cloud
 ```
 
 #### Production Environment Issues
@@ -453,31 +468,31 @@ iobroker list adapters | grep switchbot
 **Problem:** Changes not reflected
 ```bash
 # Clear adapter cache
-iobroker stop switchbot
-rm -rf /opt/iobroker/node_modules/iobroker.switchbot
+iobroker stop switchbot-cloud
+rm -rf /opt/iobroker/node_modules/iobroker.switchbot-cloud
 # Reinstall
 ```
 
 **Problem:** Adapter won't start
 ```bash
 # Check logs for errors
-iobroker logs switchbot
+iobroker logs switchbot-cloud
 
 # Check adapter configuration
-iobroker get switchbot.0
+iobroker get switchbot-cloud.0
 
 # Validate credentials
-# Go to Admin → Instances → switchbot → Config → Test Connection
+# Go to Admin → Instances → switchbot-cloud → Config → Test Connection
 ```
 
 **Problem:** Devices not discovered
 ```bash
 # Enable debug logging
-iobroker set switchbot.0 --logLevel debug
-iobroker restart switchbot
+iobroker set switchbot-cloud.0 --logLevel debug
+iobroker restart switchbot-cloud
 
 # Check API connection
-iobroker state get switchbot.0.info.connection
+iobroker state get switchbot-cloud.0.info.connection
 
 # Verify Cloud Service is enabled in SwitchBot app
 ```
@@ -485,13 +500,13 @@ iobroker state get switchbot.0.info.connection
 **Problem:** States not updating
 ```bash
 # Check polling interval
-iobroker get switchbot.0 --native pollInterval
+iobroker get switchbot-cloud.0 --native pollInterval
 
 # Verify adapter is alive
-iobroker state get switchbot.0.info.alive
+iobroker state get switchbot-cloud.0.info.alive
 
 # Check for API errors in logs
-iobroker logs switchbot | grep -i error
+iobroker logs switchbot-cloud | grep -i error
 ```
 
 ### Memory Leak Testing
@@ -500,7 +515,7 @@ For long-term stability testing:
 
 ```bash
 # Monitor memory usage
-watch -n 5 'ps aux | grep iobroker.switchbot'
+watch -n 5 'ps aux | grep iobroker.switchbot-cloud'
 
 # Or use ioBroker built-in monitoring
 # Admin → Instances → show details → Memory usage
@@ -511,10 +526,10 @@ watch -n 5 'ps aux | grep iobroker.switchbot'
 ```bash
 # Check API rate limiting
 # Monitor over 24 hours to ensure < 10,000 requests/day
-iobroker logs switchbot | grep "API request"
+iobroker logs switchbot-cloud | grep "API request"
 
 # Calculate requests per day
-iobroker logs switchbot --since "24 hours ago" | grep "API request" | wc -l
+iobroker logs switchbot-cloud --since "24 hours ago" | grep "API request" | wc -l
 ```
 
 ---
