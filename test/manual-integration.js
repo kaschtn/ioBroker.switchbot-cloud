@@ -1,12 +1,12 @@
 /**
  * Manual Integration Test Script for SwitchBot Adapter
- * 
+ *
  * This script helps you test the adapter in a real ioBroker environment.
  * Run this after installing the adapter in your test instance.
- * 
+ *
  * Usage:
  *   node test/manual-integration.js
- * 
+ *
  * Prerequisites:
  *   - Adapter installed in ioBroker
  *   - Valid SwitchBot credentials configured
@@ -174,7 +174,7 @@ class AdapterTestSuite {
             await this.testDeviceControl();
             await this.testPollingInterval();
             await this.testErrorHandling();
-            
+
             this.printSummary();
         } catch (err) {
             error(`Test suite failed: ${err.message}`);
@@ -213,7 +213,7 @@ class AdapterTestSuite {
         section('Test 2: Adapter Alive Status');
         try {
             const state = await this.api.getState(`${ADAPTER_INSTANCE}.info.alive`);
-            
+
             if (state && state.val === true) {
                 this.recordTest('Adapter Alive', true, 'Adapter is running');
             } else {
@@ -228,7 +228,7 @@ class AdapterTestSuite {
         section('Test 3: API Connection Status');
         try {
             const state = await this.api.getState(`${ADAPTER_INSTANCE}.info.connection`);
-            
+
             if (state && state.val === true) {
                 this.recordTest('API Connection', true, 'Adapter successfully connected to SwitchBot API');
             } else {
@@ -244,10 +244,10 @@ class AdapterTestSuite {
         try {
             const states = await this.api.getStates(`${ADAPTER_INSTANCE}.*`);
             const deviceIds = new Set();
-            
+
             // Extract unique device IDs
             Object.keys(states).forEach(key => {
-                const match = key.match(/switchbot-cloud\.0\.([^.]+)\./);  
+                const match = key.match(/switchbot-cloud\.0\.([^.]+)\./);
                 if (match && match[1] !== 'info') {
                     deviceIds.add(match[1]);
                 }
@@ -275,12 +275,12 @@ class AdapterTestSuite {
 
             if (stateCount > 5) { // At least info states + some device states
                 this.recordTest('Device States', true, `Found ${stateCount} states`);
-                
+
                 // Check for common states
                 const hasDeviceId = Object.keys(states).some(k => k.includes('deviceId'));
                 const hasDeviceType = Object.keys(states).some(k => k.includes('deviceType'));
                 const hasDeviceName = Object.keys(states).some(k => k.includes('deviceName'));
-                
+
                 if (hasDeviceId && hasDeviceType && hasDeviceName) {
                     info('Found standard device properties (deviceId, deviceType, deviceName)');
                 } else {
@@ -297,7 +297,7 @@ class AdapterTestSuite {
     async testDeviceControl() {
         section('Test 6: Device Control');
         info('Looking for controllable devices...\n');
-        
+
         try {
             const states = await this.api.getStates(`${ADAPTER_INSTANCE}.*.power`);
             const controllableDevices = Object.keys(states).filter(k => k.includes('.power'));
@@ -308,18 +308,18 @@ class AdapterTestSuite {
             }
 
             info(`Found ${controllableDevices.length} controllable device(s)`);
-            
+
             // Test first controllable device
             const testDevice = controllableDevices[0];
             info(`Testing device: ${testDevice}`);
-            
+
             const currentState = await this.api.getState(testDevice);
             const currentValue = currentState ? currentState.val : false;
-            
+
             info(`Current power state: ${currentValue}`);
             warning('Control test is read-only in this version to prevent unwanted device changes.');
             warning('To test control, manually toggle the device in ioBroker admin and verify it works.');
-            
+
             this.recordTest('Device Control', true, 'Control interface available (manual testing recommended)');
         } catch (err) {
             this.recordTest('Device Control', false, `Cannot test device control: ${err.message}`);
@@ -329,7 +329,7 @@ class AdapterTestSuite {
     async testPollingInterval() {
         section('Test 7: Polling Interval');
         info('Checking if device states are being updated...\n');
-        
+
         try {
             const states = await this.api.getStates(`${ADAPTER_INSTANCE}.*.battery`);
             const batteryStates = Object.keys(states).filter(k => k.includes('.battery'));
@@ -346,9 +346,9 @@ class AdapterTestSuite {
             info(`Monitoring ${testState}`);
             info(`Initial timestamp: ${new Date(initialTimestamp).toISOString()}`);
             info('Waiting 10 seconds to check for updates...');
-            
+
             await wait(10000);
-            
+
             const updatedState = await this.api.getState(testState);
             const updatedTimestamp = updatedState ? updatedState.ts : 0;
 
@@ -368,17 +368,17 @@ class AdapterTestSuite {
     async testErrorHandling() {
         section('Test 8: Error Handling');
         info('Checking adapter error handling capabilities...\n');
-        
+
         try {
             // Check if adapter has proper error state
             const states = await this.api.getStates(`${ADAPTER_INSTANCE}.info.*`);
-            
+
             if (states[`${ADAPTER_INSTANCE}.info.connection`]) {
                 this.recordTest('Error Handling', true, 'Adapter has connection state for error reporting');
             } else {
                 this.recordWarning('Error Handling', 'No connection state found for error reporting');
             }
-            
+
             info('For thorough error testing:');
             info('1. Try invalid API credentials and verify adapter reports error');
             info('2. Disconnect network and verify adapter handles it gracefully');
@@ -428,7 +428,7 @@ class AdapterTestSuite {
 // Main execution
 (async () => {
     const suite = new AdapterTestSuite();
-    
+
     try {
         await suite.run();
     } catch (err) {
