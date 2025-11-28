@@ -63,9 +63,10 @@ jobs:
 
     runs-on: ubuntu-22.04
 
-    # Write permissions are required to create Github releases
+    # Permissions required for NPM Trusted Publishing and GitHub releases
     permissions:
-      contents: write
+      contents: write      # Required to create GitHub releases
+      id-token: write      # Required for NPM provenance via OIDC
 
     steps:
       - uses: ioBroker/testing-action-deploy@v1
@@ -73,7 +74,7 @@ jobs:
           node-version: '18.x'
           # Uncomment the following line if your adapter cannot be installed using 'npm ci'
           # install-command: 'npm install'
-          npm-token: ${{ secrets.NPM_TOKEN }}
+          # NPM Trusted Publishing - no npm-token needed, uses OIDC authentication
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
           # When using Sentry for error reporting, Sentry can be informed about new releases

@@ -25,26 +25,35 @@ Before you can release the adapter, ensure you have:
 #### 1. NPM Account Setup
 
 - **NPM Account:** Register at https://www.npmjs.com
-- **NPM Access Token:**
+- **NPM Trusted Publishing (Provenance):**
+  
+  NPM supports automated publishing from GitHub Actions without requiring manual tokens. This provides:
+  - ✅ Enhanced security (no token storage)
+  - ✅ Automatic provenance attestation
+  - ✅ Supply chain transparency
+  - ✅ No token rotation needed
+  
+  **Setup Steps:**
   1. Log in to NPM
-  2. Go to: Avatar → Access Tokens
-  3. Generate New Token → Classic Token
-  4. Select **"Automation"** as token type
-  5. Copy the token (starts with `npm_`)
+  2. Go to your package page (or create package if first release)
+  3. Navigate to: Settings → Publishing Access
+  4. Click "Configure Trusted Publishers"
+  5. Select "GitHub Actions"
+  6. Configure:
+     - **Repository:** `kaschtn/ioBroker.switchbot-cloud`
+     - **Workflow:** `test-and-release.yml`
+     - **Environment:** (leave empty for default)
+  7. Save configuration
 
 #### 2. GitHub Repository Setup
 
 - **Repository Access:** Write/Admin access to the repository
-- **GitHub Secrets:** Configure in repository settings
-  - `NPM_TOKEN`: Your NPM automation token
-  - `GITHUB_TOKEN`: Automatically provided by GitHub
+- **GitHub Permissions:** The workflow requires these permissions (already configured in `.github/workflows/test-and-release.yml`):
+  - `id-token: write` - Required for OIDC authentication with NPM
+  - `contents: write` - Required to create GitHub releases
+  - `GITHUB_TOKEN` - Automatically provided by GitHub Actions
 
-**To add NPM_TOKEN secret:**
-1. Go to: Repository → Settings → Secrets and variables → Actions
-2. Click "New repository secret"
-3. Name: `NPM_TOKEN`
-4. Value: Your NPM token
-5. Click "Add secret"
+**Note:** With NPM Trusted Publishing, no manual secret configuration is needed. GitHub Actions authenticates directly with NPM using OIDC.
 
 #### 3. Development Environment
 
@@ -293,9 +302,11 @@ git push origin --tags
 3. Verify all jobs complete successfully:
    - ✅ check-and-lint
    - ✅ adapter-tests (9 combinations: 3 Node versions × 3 OS)
-   - ✅ deploy (publishes to NPM)
+   - ✅ deploy (publishes to NPM with provenance attestation)
 
 **Expected duration:** 10-20 minutes
+
+**Provenance:** When using trusted publishing, the package will include provenance attestation, visible on the NPM package page under "Provenance" section.
 
 ### Step 5: Verify NPM Publication
 
@@ -309,6 +320,15 @@ npm view iobroker.switchbot-cloud@0.9.0
 # Visit NPM website
 # https://www.npmjs.com/package/iobroker.switchbot-cloud
 ```
+
+**Verify Provenance (if using trusted publishing):**
+1. Visit the package page on NPM
+2. Scroll to "Provenance" section
+3. Verify checkmark showing build provenance
+4. Click "View more details" to see:
+   - Source repository
+   - Workflow run
+   - Commit hash
 
 ### Step 6: Verify GitHub Release
 
@@ -422,16 +442,23 @@ git commit -m "chore: prepare release"
 git stash
 ```
 
-#### Issue: NPM publish fails - "401 Unauthorized"
+#### Issue: NPM publish fails - "401 Unauthorized" or "403 Forbidden"
 
 **Solution:**
 ```bash
-# Verify NPM token is set correctly in GitHub secrets
-# Go to: Repository → Settings → Secrets → NPM_TOKEN
+# Verify trusted publisher is configured on NPM:
+# 1. Go to https://www.npmjs.com/package/iobroker.switchbot-cloud/access
+# 2. Check "Trusted Publishers" section
+# 3. Ensure GitHub Actions is configured for your repository and workflow
 
-# Test locally (not recommended for production)
-npm login
-npm publish
+# Verify workflow permissions in .github/workflows/test-and-release.yml:
+# The deploy job should have:
+#   permissions:
+#     id-token: write  # Required for OIDC
+#     contents: write  # For GitHub releases
+
+# Check the workflow run logs for detailed error messages
+# Go to: Actions → failed workflow → deploy job → View logs
 ```
 
 #### Issue: GitHub Actions workflow doesn't trigger
@@ -623,16 +650,18 @@ Print this checklist for each release:
 
 ## 💡 Best Practices
 
-1. **Always test before releasing** - Run full test suite
-2. **Use semantic versioning** - Follow SemVer strictly
-3. **Keep changelog updated** - Add entries for every change
-4. **Release often** - Small, frequent releases are better
-5. **Monitor after release** - Watch for issues in first 24 hours
-6. **Communicate breaking changes** - Clearly document in changelog
-7. **Use pre-releases** - For testing major changes
-8. **Never force push tags** - Once public, tags are permanent
-9. **Document everything** - Update README and docs
-10. **Backup before major releases** - Tag stable versions
+1. **Use NPM Trusted Publishing** - More secure than classic tokens
+2. **Always test before releasing** - Run full test suite
+3. **Use semantic versioning** - Follow SemVer strictly
+4. **Keep changelog updated** - Add entries for every change
+5. **Release often** - Small, frequent releases are better
+6. **Monitor after release** - Watch for issues in first 24 hours
+7. **Communicate breaking changes** - Clearly document in changelog
+8. **Use pre-releases** - For testing major changes
+9. **Never force push tags** - Once public, tags are permanent
+10. **Document everything** - Update README and docs
+11. **Verify provenance** - Check attestation on NPM after publishing
+12. **Backup before major releases** - Tag stable versions
 
 ---
 
