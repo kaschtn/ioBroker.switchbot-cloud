@@ -794,3 +794,23 @@ tests.integration(path.join(__dirname, ".."), {
 ```
 
 [CUSTOMIZE: Add any adapter-specific coding standards or patterns here]
+## English, please
+- **Use English for all code comments, log messages, and documentation**
+
+## Code Style and Standards adapter-specific extension
+
+### Clean Code First
+- **Readability before cleverness**: code should be self-explanatory and easy to understand
+- **Meaningful naming**: use descriptive and consistent names for variables, functions, and classes
+- **No unnecessary complexity**: avoid over-engineering and keep solutions simple
+- **Comments where necessary**: add comments to explain complex logic or important decisions, unless code is self-explanatory
+
+### SOLID Priciples
+- **Single responsibility**: each class or module should have one responsibility
+- **DRY (Don't Repeat Yourself)**: avoid code duplication by abstracting common functionality
+- **Separation of concerns**: different concerns should be separated into distinct sections or modules
+
+### Testability
+- **TDD (Test-Driven Development)**: write tests before implementing functionality
+- **Unit testing**: write tests for individual units of code to ensure correctness
+- **Write testable code**: design modules and functions to be easily testable

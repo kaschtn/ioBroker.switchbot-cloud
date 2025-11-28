@@ -215,13 +215,13 @@ cd /opt/iobroker
 npm install /mnt/c/tmp/SB\ API/iobroker-switchbot
 
 # Upload adapter to ioBroker
-iobroker upload switchbot
+iobroker upload switchbot-cloud
 
 # Add adapter instance
-iobroker add switchbot
+iobroker add switchbot-cloud
 
 # Alternative: Add with auto-start disabled for manual testing
-iobroker add switchbot 0 --enabled false
+iobroker add switchbot-cloud 0 --enabled false
 ```
 
 ### Method 2: Install from GitHub
@@ -232,8 +232,8 @@ cd /opt/iobroker
 npm install kaschtn/ioBroker.switchbot-cloud
 
 # Upload and add
-iobroker upload switchbot
-iobroker add switchbot
+iobroker upload switchbot-cloud
+iobroker add switchbot-cloud
 ```
 
 ### Method 3: Use npm link (Best for Active Development)
@@ -249,22 +249,22 @@ cd /opt/iobroker
 npm link iobroker.switchbot-cloud
 
 # Upload and add
-iobroker upload switchbot
-iobroker add switchbot
+iobroker upload switchbot-cloud
+iobroker add switchbot-cloud
 ```
 
 **After code changes with npm link:**
 ```bash
 # Just re-upload, no need to reinstall
-iobroker upload switchbot
-iobroker restart switchbot
+iobroker upload switchbot-cloud
+iobroker restart switchbot-cloud
 ```
 
 ### Configure Adapter
 
 1. Open Admin interface: `http://localhost:8081`
 2. Navigate to "Instances" tab
-3. Find "switchbot" adapter
+3. Find "switchbot-cloud" adapter
 4. Click configuration (wrench icon)
 5. Enter your SwitchBot credentials:
    - Open Token
@@ -291,22 +291,22 @@ npm test
 npm run lint
 
 # 4. Upload changes to ioBroker
-iobroker upload switchbot
+iobroker upload switchbot-cloud
 
 # 5. Restart adapter
-iobroker restart switchbot
+iobroker restart switchbot-cloud
 
 # 6. Monitor logs
-iobroker logs switchbot --watch
+iobroker logs switchbot-cloud --watch
 
 # 7. Check adapter status
-iobroker status switchbot
+iobroker status switchbot-cloud
 
 # 8. View created objects
-iobroker object list switchbot.0.*
+iobroker object list switchbot-cloud.0.*
 
 # 9. Check specific state
-iobroker state get switchbot.0.info.connection
+iobroker state get switchbot-cloud.0.info.connection
 ```
 
 ### Manual Integration Testing
@@ -326,14 +326,14 @@ Enable debug logging for detailed output:
 
 ```bash
 # Via command line
-iobroker set switchbot.0 --logLevel debug
-iobroker restart switchbot
+iobroker set switchbot-cloud.0 --logLevel debug
+iobroker restart switchbot-cloud
 
 # View debug logs
-iobroker logs switchbot --watch
+iobroker logs switchbot-cloud --watch
 
 # Or via Admin interface:
-# Instances → switchbot → Config → Log Level → debug
+# Instances → switchbot-cloud → Config → Log Level → debug
 ```
 
 ### Testing Scenarios
@@ -343,22 +343,22 @@ iobroker logs switchbot --watch
    # Test connection
    # Verify device discovery
    # Check state creation
-   iobroker object list switchbot.0.*
+   iobroker object list switchbot-cloud.0.*
    ```
 
 2. **Device Control Test**
    ```bash
    # Set a state to control a device
-   iobroker state set switchbot.0.DEVICEID.power true
+   iobroker state set switchbot-cloud.0.DEVICEID.power true
    
    # Verify command was sent
-   iobroker logs switchbot | grep "Command.*sent"
+   iobroker logs switchbot-cloud | grep "Command.*sent"
    ```
 
 3. **Polling Test**
    ```bash
    # Monitor state updates
-   watch -n 2 'iobroker state get switchbot.0.DEVICEID.temperature'
+   watch -n 2 'iobroker state get switchbot-cloud.0.DEVICEID.temperature'
    ```
 
 4. **Error Handling Test**
@@ -371,10 +371,10 @@ iobroker logs switchbot --watch
 5. **Resource Cleanup Test**
    ```bash
    # Stop and verify clean shutdown
-   iobroker stop switchbot
+   iobroker stop switchbot-cloud
    
    # Check for memory leaks
-   ps aux | grep switchbot
+   ps aux | grep switchbot-cloud
    ```
 
 ---
@@ -398,13 +398,13 @@ iobroker restart
 
 ```bash
 # Verify adapter is installed
-ls -la /opt/iobroker/node_modules/ | grep switchbot
+ls -la /opt/iobroker/node_modules/ | grep switchbot-cloud
 
 # Re-upload adapter
-iobroker upload switchbot
+iobroker upload switchbot-cloud
 
 # Check adapter list
-iobroker list adapters | grep switchbot
+iobroker list adapters | grep switchbot-cloud
 ```
 
 ### Can't Access Admin Interface
@@ -430,11 +430,11 @@ netsh interface portproxy add v4tov4 listenport=8081 listenaddress=0.0.0.0 conne
 
 ```bash
 # Check adapter logs
-iobroker logs switchbot
+iobroker logs switchbot-cloud
 
 # Enable debug logging
-iobroker set switchbot.0 --logLevel debug
-iobroker restart switchbot
+iobroker set switchbot-cloud.0 --logLevel debug
+iobroker restart switchbot-cloud
 
 # Check for errors in main log
 tail -f /opt/iobroker/log/iobroker.*.log
@@ -448,16 +448,16 @@ npm install
 
 ```bash
 # Full reinstall cycle
-iobroker stop switchbot
+iobroker stop switchbot-cloud
 rm -rf /opt/iobroker/node_modules/iobroker.switchbot-cloud
 cd /opt/iobroker
 npm install /mnt/c/tmp/SB\ API/iobroker-switchbot
-iobroker upload switchbot
-iobroker start switchbot
+iobroker upload switchbot-cloud
+iobroker start switchbot-cloud
 ```
 
 ### WSL Network Issues
-
+exi
 ```bash
 # Check WSL network connectivity
 ping google.com
@@ -494,25 +494,25 @@ iobroker restart
 
 # Status
 iobroker status
-iobroker status switchbot
+iobroker status switchbot-cloud
 
 # Logs
 iobroker logs
-iobroker logs switchbot --watch
+iobroker logs switchbot-cloud --watch
 
 # Adapter Management
-iobroker upload switchbot
-iobroker add switchbot
-iobroker del switchbot
+iobroker upload switchbot-cloud
+iobroker add switchbot-cloud
+iobroker del switchbot-cloud
 
 # Object/State Management
-iobroker object list switchbot.0.*
-iobroker state get switchbot.0.info.connection
-iobroker state set switchbot.0.DEVICE.power true
+iobroker object list switchbot-cloud.0.*
+iobroker state get switchbot-cloud.0.info.connection
+iobroker state set switchbot-cloud.0.DEVICE.power true
 
 # Configuration
-iobroker set switchbot.0 --logLevel debug
-iobroker get switchbot.0
+iobroker set switchbot-cloud.0 --logLevel debug
+iobroker get switchbot-cloud.0
 ```
 
 ### Development Workflow
@@ -526,11 +526,11 @@ npm test
 npm run lint
 
 # 3. Update in ioBroker
-iobroker upload switchbot
-iobroker restart switchbot
+iobroker upload switchbot-cloud
+iobroker restart switchbot-cloud
 
 # 4. Monitor
-iobroker logs switchbot --watch
+iobroker logs switchbot-cloud --watch
 ```
 
 ---

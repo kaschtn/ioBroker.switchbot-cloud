@@ -19,7 +19,7 @@ class SwitchBot extends utils.Adapter {
     constructor(options) {
         super({
             ...options,
-            name: 'switchbot',
+            name: 'switchbot-cloud',
         });
 
         this.on('ready', this.onReady.bind(this));
