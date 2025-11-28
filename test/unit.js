@@ -71,7 +71,7 @@ tests.integration(path.join(__dirname, '..'), {
                 console.log('✅ Step 9: Adapter stopped');
             });
         });
-        
+
         suite('Adapter Startup with Missing Config', (getHarness) => {
             it('Should handle missing configuration gracefully', async function() {
                 this.timeout(15000);
@@ -103,10 +103,10 @@ tests.integration(path.join(__dirname, '..'), {
                 });
 
                 console.log('🔍 Starting adapter without credentials...');
-                
+
                 // Use startAdapter instead of startAdapterAndWait since adapter may fail immediately
                 await harness.startAdapter();
-                
+
                 // Give adapter brief time to start and validate config
                 await new Promise((res) => setTimeout(res, 3000));
 
@@ -115,10 +115,10 @@ tests.integration(path.join(__dirname, '..'), {
 
                 // With empty credentials, adapter should not create device states
                 const deviceStates = stateIds.filter(id => !id.includes('info.'));
-                
+
                 expect(deviceStates.length, 'Should have no device states without valid credentials').to.equal(0);
                 console.log('✅ Adapter correctly handled missing credentials - no device states created');
-                
+
                 // Cleanup
                 await harness.stopAdapter();
             });
