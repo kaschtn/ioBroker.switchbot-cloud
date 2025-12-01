@@ -205,14 +205,14 @@ This is the best method for testing during development:
 
 ```bash
 # Navigate to your adapter directory
-cd /path/to/ioBroker.switchbot-cloud
+cd ~/git/ioBroker.switchbot-cloud
 
 # Install dependencies
 npm install
 
 # Link adapter to ioBroker
 cd /opt/iobroker
-npm install /path/to/ioBroker.switchbot-cloud
+npm install ~/git/ioBroker.switchbot-cloud
 
 # Upload adapter to ioBroker
 iobroker upload switchbot-cloud
@@ -240,7 +240,7 @@ iobroker add switchbot-cloud
 
 ```bash
 # In your adapter directory
-cd /path/to/ioBroker.switchbot-cloud
+cd ~/git/ioBroker.switchbot-cloud
 npm install
 npm link
 
@@ -281,7 +281,7 @@ iobroker restart switchbot-cloud
 
 ```bash
 # 1. Make code changes in your adapter
-cd /path/to/ioBroker.switchbot-cloud
+cd ~/git/ioBroker.switchbot-cloud
 # ... edit files ...
 
 # 2. Run automated tests
@@ -313,7 +313,7 @@ iobroker state get switchbot-cloud.0.info.connection
 
 ```bash
 # Run the manual integration test script
-cd /path/to/ioBroker.switchbot-cloud
+cd ~/git/ioBroker.switchbot-cloud
 node test/manual-integration.js
 
 # Or with custom host (if needed)
@@ -451,7 +451,7 @@ npm install
 iobroker stop switchbot-cloud
 rm -rf /opt/iobroker/node_modules/iobroker.switchbot-cloud
 cd /opt/iobroker
-npm install /path/to/ioBroker.switchbot-cloud
+npm install ~/git/ioBroker.switchbot-cloud
 iobroker upload switchbot-cloud
 iobroker start switchbot-cloud
 ```
@@ -519,7 +519,7 @@ iobroker get switchbot-cloud.0
 
 ```bash
 # 1. Edit code
-cd /path/to/ioBroker.switchbot-cloud
+cd ~/git/ioBroker.switchbot-cloud
 
 # 2. Test locally
 npm test
