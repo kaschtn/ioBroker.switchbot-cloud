@@ -7,7 +7,7 @@
 
 ## **WORK IN PROGRESS**
 
-## 0.9.0 (2025-11-11)
+## 0.1.0 (2025-12-01)
 
 ### Features
 - Initial release of SwitchBot adapter for ioBroker

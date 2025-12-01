@@ -269,18 +269,18 @@ iobroker restart switchbot-cloud
 ```bash
 cd /path/to/iobroker-switchbot
 npm pack
-# Creates: iobroker.switchbot-cloud-0.9.0.tgz
+# Creates: iobroker.switchbot-cloud-0.1.0.tgz
 ```
 
 **Install on Server:**
 ```bash
 # Copy to server
-scp iobroker.switchbot-cloud-0.9.0.tgz user@iobroker:/tmp/
+scp iobroker.switchbot-cloud-0.1.0.tgz user@iobroker:/tmp/
 
 # Install
 ssh user@iobroker
 cd /opt/iobroker
-sudo npm install /tmp/iobroker.switchbot-cloud-0.9.0.tgz
+sudo npm install /tmp/iobroker.switchbot-cloud-0.1.0.tgz
 iobroker upload switchbot-cloud
 iobroker add switchbot-cloud
 ```

@@ -97,10 +97,10 @@ The adapter follows [Semantic Versioning](https://semver.org/) (SemVer):
 For testing before official release:
 
 ```bash
-# Create beta version: 0.9.0-beta.1
+# Create beta version: 0.1.0-beta.1
 npm run release -- --prerelease beta
 
-# Create release candidate: 0.9.0-rc.1
+# Create release candidate: 0.1.0-rc.1
 npm run release -- --prerelease rc
 ```
 
@@ -264,13 +264,13 @@ The script will ask:
 #### Automated Release
 
 ```bash
-# Patch release (0.9.0 → 0.9.1)
+# Patch release (0.1.0 → 0.1.1)
 npm run release-patch
 
-# Minor release (0.9.0 → 0.10.0)
+# Minor release (0.1.0 → 0.2.0)
 npm run release-minor
 
-# Major release (0.9.0 → 1.0.0)
+# Major release (0.1.0 → 1.0.0)
 npm run release-major
 ```
 
@@ -315,7 +315,7 @@ git push origin --tags
 npm view iobroker.switchbot-cloud
 
 # Check specific version
-npm view iobroker.switchbot-cloud@0.9.0
+npm view iobroker.switchbot-cloud@0.1.0
 
 # Visit NPM website
 # https://www.npmjs.com/package/iobroker.switchbot-cloud
@@ -334,7 +334,7 @@ npm view iobroker.switchbot-cloud@0.9.0
 
 1. Go to: https://github.com/kaschtn/ioBroker.switchbot-cloud/releases
 2. Verify release was created with:
-   - Correct version tag (e.g., `v0.9.0`)
+   - Correct version tag (e.g., `v0.1.0`)
    - Release notes from CHANGELOG
    - Attached assets (if any)
 

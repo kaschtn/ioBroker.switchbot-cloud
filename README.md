@@ -246,7 +246,7 @@ Enable debug logging to get detailed information:
 
 ## Changelog
 
-### 0.9.0 (2025-11-11)
+### 0.1.0 (2025-12-01)
 - Initial release
 - SwitchBot API v1.1 support
 - Support for all major SwitchBot devices
