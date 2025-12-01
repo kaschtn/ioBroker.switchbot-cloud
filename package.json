@@ -31,7 +31,7 @@
     "@alcalzone/release-script": "^4.0.0",
     "@alcalzone/release-script-plugin-iobroker": "^4.0.0",
     "@types/node": "^20.8.0",
-    "eslint": "^8.50.0",
+    "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
     "prettier": "^3.0.0",
