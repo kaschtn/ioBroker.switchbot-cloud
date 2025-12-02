@@ -13,10 +13,10 @@
         "it": "Versione iniziale con supporto SwitchBot API v1.1",
         "es": "Lanzamiento inicial con soporte SwitchBot API v1.1",
         "pl": "Pierwsze wydanie z obsługą SwitchBot API v1.1",
+        "uk": "Початковий випуск з підтримкою SwitchBot API v1.1",
         "zh-cn": "首次发布，支持SwitchBot API v1.1"
       }
     },
-    "title": "SwitchBot",
     "titleLang": {
       "en": "SwitchBot",
       "de": "SwitchBot",
@@ -27,6 +27,7 @@
       "it": "SwitchBot",
       "es": "SwitchBot",
       "pl": "SwitchBot",
+      "uk": "SwitchBot",
       "zh-cn": "SwitchBot"
     },
     "desc": {
@@ -39,6 +40,7 @@
       "it": "Controlla i dispositivi SwitchBot tramite API v1.1",
       "es": "Controla dispositivos SwitchBot a través de API v1.1",
       "pl": "Steruj urządzeniami SwitchBot przez API v1.1",
+      "uk": "Керування пристроями SwitchBot через API v1.1",
       "zh-cn": "通过API v1.1控制SwitchBot设备"
     },
     "authors": [
@@ -46,26 +48,29 @@
     ],
     "keywords": [
       "switchbot",
-      "smart home",
+      "temperature meters",
+      "humidity meters",
       "automation",
       "iot"
     ],
-    "license": "MIT",
+    "licenseInformation": "MIT",
     "platform": "Javascript/Node.js",
-    "main": "main.js",
-    "icon": "switchbot.png",
+    "icon": "switchbot.svg",
     "enabled": true,
-    "extIcon": "https://raw.githubusercontent.com/kaschtn/ioBroker.switchbot-cloud/master/admin/switchbot.png",
+    "extIcon": "https://raw.githubusercontent.com/kaschtn/ioBroker.switchbot-cloud/master/admin/switchbot.svg",
     "readme": "https://github.com/kaschtn/ioBroker.switchbot-cloud/blob/master/README.md",
     "loglevel": "info",
     "mode": "daemon",
     "type": "iot-systems",
+    "tier": 3,
     "compact": true,
     "connectionType": "cloud",
     "dataSource": "poll",
     "adminUI": {
       "config": "json"
     },
+    "protectedNative": ["token", "secret"],
+    "encryptedNative": ["token", "secret"],
     "dependencies": [
       {
         "js-controller": ">=5.0.19"
