@@ -27,12 +27,8 @@ jobs:
         uses: actions/github-script@v8
         with:
           script: |
-            const { exec } = require('child_process');
-            const util = require('util');
-            const execPromise = util.promisify(exec);
-            
             try {
-              const { stdout } = await execPromise('npm outdated --json');
+              const { stdout } = await exec.getExecOutput('npm outdated --json');
               if (stdout) {
                 const outdated = JSON.parse(stdout);
                 const packages = Object.keys(outdated);
@@ -40,7 +36,7 @@ jobs:
                 if (packages.length > 0) {
                   const body = `## Outdated Dependencies\n\nThe following packages have updates available:\n\n${packages.map(pkg => `- **${pkg}**: ${outdated[pkg].current} → ${outdated[pkg].latest}`).join('\n')}`;
                   
-                  github.rest.issues.create({
+                  await github.rest.issues.create({
                     owner: context.repo.owner,
                     repo: context.repo.repo,
                     title: 'Dependency Updates Available',
