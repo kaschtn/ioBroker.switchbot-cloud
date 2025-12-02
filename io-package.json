@@ -53,7 +53,10 @@
       "automation",
       "iot"
     ],
-    "licenseInformation": "MIT",
+    "licenseInformation": {
+      "license": "MIT",
+      "type": "free"
+    },
     "platform": "Javascript/Node.js",
     "icon": "switchbot.svg",
     "enabled": true,
