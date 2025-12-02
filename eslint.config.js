@@ -1,13 +1,13 @@
 const {
     defineConfig,
-} = require("eslint/config");
+} = require('eslint/config');
 
-const globals = require("globals");
-const js = require("@eslint/js");
+const globals = require('globals');
+const js = require('@eslint/js');
 
 const {
     FlatCompat,
-} = require("@eslint/eslintrc");
+} = require('@eslint/eslintrc');
 
 const compat = new FlatCompat({
     baseDirectory: __dirname,
@@ -26,19 +26,19 @@ module.exports = defineConfig([{
         parserOptions: {},
     },
 
-    extends: compat.extends("eslint:recommended"),
+    extends: compat.extends('eslint:recommended'),
 
     rules: {
-        "indent": ["error", 4],
-        "no-console": "off",
+        'indent': ['error', 4],
+        'no-console': 'off',
 
-        "no-unused-vars": ["error", {
-            "ignoreRestSiblings": true,
-            "argsIgnorePattern": "^_",
+        'no-unused-vars': ['error', {
+            'ignoreRestSiblings': true,
+            'argsIgnorePattern': '^_',
         }],
 
-        "no-trailing-spaces": "error",
-        "quotes": ["error", "single"],
-        "semi": ["error", "always"],
+        'no-trailing-spaces': 'error',
+        'quotes': ['error', 'single'],
+        'semi': ['error', 'always'],
     },
 }]);
