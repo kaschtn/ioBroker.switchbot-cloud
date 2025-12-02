@@ -7,7 +7,9 @@
 
 [![NPM](https://nodei.co/npm/iobroker.switchbot-cloud.png?downloads=true)](https://nodei.co/npm/iobroker.switchbot-cloud/)
 
-**Tests:** [![Test and Release](https://github.com/kaschtn/ioBroker.switchbot-cloud/workflows/Test%20and%20Release/badge.svg)](https://github.com/kaschtn/ioBroker.switchbot-cloud/actions/)
+**Tests:**
+[![Test and Release](https://github.com/kaschtn/ioBroker.switchbot-cloud/actions/workflows/test-and-release.yml/badge.svg)](https://github.com/kaschtn/ioBroker.switchbot-cloud/actions/workflows/test-and-release.yml)
+[![Test Develop](https://github.com/kaschtn/ioBroker.switchbot-cloud/actions/workflows/test-develop.yml/badge.svg)](https://github.com/kaschtn/ioBroker.switchbot-cloud/actions/workflows/test-develop.yml)
 
 ## SwitchBot adapter for ioBroker
 
