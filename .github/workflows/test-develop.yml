@@ -1,4 +1,4 @@
-name: Test Develop
+name: Test DevelopRemoved build from tests
 
 # Run this job on all pushes and pull requests
 # as well as tags with a semantic version
@@ -44,3 +44,4 @@ jobs:
           os: ${{ matrix.os }}
           # Uncomment the following line if your adapter cannot be installed using 'npm ci'
           # install-command: 'npm install'
+          build: true

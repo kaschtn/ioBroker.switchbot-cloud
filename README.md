@@ -20,7 +20,7 @@ This adapter allows you to control and monitor SwitchBot devices through ioBroke
 ## Features
 
 - **Full SwitchBot API v1.1 support** with improved authentication
-- **Physical device control**: Bot, Curtain, Smart Lock (Pro/Ultra), Meter, MeterPlus, MeterPro, MeterPro(CO2), WoIOSensor (Outdoor Meter), Plug, Plug Mini (US/JP/EU), Color Bulb, Strip Light, Humidifier, Motion Sensor, Contact Sensor
+- **Physical device control**: Bot, Curtain, Smart Lock (Pro/Ultra), Meter, MeterPlus, MeterPro, MeterPro(CO2), WoIOSensor (Outdoor Meter), Plug, Plug Mini (US/JP/EU), Color Bulb, Strip Light, Humidifier, Motion Sensor, Contact Sensor, Water Detector, Hub Mini, Hub Mini2
 - **Infrared remote control**: All IR device types (TV, Air Conditioner, Light, Fan, etc.)
 - **Real-time status updates** with configurable polling intervals
 - **Comprehensive error handling** with automatic retry logic
@@ -104,6 +104,10 @@ The following devices are currently supported:
 | **Humidifier** | On/Off, Set Mode | power, humidity, temperature, nebulizationEfficiency, auto, childLock, sound, lackWater |
 | **Motion Sensor** | - | moveDetected, brightness, battery |
 | **Contact Sensor** | - | openState, moveDetected, brightness, battery |
+| **Water Detector** | - | status, battery |
+| **Hub Mini** | - | - |
+| **Hub Mini2** | - | - |
+| **Hub 2** | - | temperature, humidity, lightLevel |
 
 ### Infrared Remote Devices
 

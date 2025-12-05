@@ -1,6 +1,6 @@
 {
-  "i18n": true,
   "type": "panel",
+  "i18n": true,
   "items": {
     "_info": {
       "type": "header",
@@ -127,13 +127,15 @@
     },
     "_helpSteps": {
       "type": "staticText",
-      "text": "1. Open the SwitchBot mobile app<br>2. Go to <strong>Profile → Preferences</strong><br>3. Tap <strong>App Version</strong> 10 times to enable Developer Options<br>4. Tap <strong>Developer Options</strong><br>5. Tap <strong>Get Token</strong> to view your credentials<br><br><em style='color: #666;'>Note: You need SwitchBot app version 6.14 or later to get the secret key.</em>",
+      "text": "1. Open the SwitchBot mobile app\n2. Go to Profile → Preferences\n3. Tap App Version 10 times to enable Developer Options\n4. Tap Developer Options\n5. Tap Get Token to view your credentials\n\nNote: You need SwitchBot app version 6.14 or later to get the secret key.",
+      "newLine": false,
       "style": {
         "lineHeight": "1.8",
         "backgroundColor": "#f5f5f5",
         "padding": "15px",
         "borderRadius": "4px",
-        "borderLeft": "4px solid #4caf50"
+        "borderLeft": "4px solid #4caf50",
+        "whiteSpace": "pre-line"
       }
     },
     "_divider4": {
@@ -146,17 +148,19 @@
     },
     "_supportedDevicesPhysical": {
       "type": "staticText",
-      "text": "<strong>Physical Devices:</strong> Bot, Curtain/Curtain 3, Smart Lock/Lock Pro/Lock Ultra, Meter/Meter Plus/Meter Pro/Meter Pro (CO2), Outdoor Meter (WoIOSensor), Plug/Plug Mini (US/JP/EU), Color Bulb, Strip Light, Humidifier, Motion Sensor, Contact Sensor",
+      "text": "Physical Devices: Bot, Curtain/Curtain 3, Smart Lock/Lock Pro/Lock Ultra, Meter/Meter Plus/Meter Pro/Meter Pro (CO2), Outdoor Meter (WoIOSensor), Plug/Plug Mini (US/JP/EU), Color Bulb, Strip Light, Humidifier, Motion Sensor, Contact Sensor, "text": "Water Detector, Hub Mini, Hub Mini2, Hub 2"",
       "style": {
         "marginBottom": "10px",
-        "lineHeight": "1.6"
+        "lineHeight": "1.6",
+        "fontWeight": "500"
       }
     },
     "_supportedDevicesIR": {
       "type": "staticText",
-      "text": "<strong>Infrared Remote Devices:</strong> All IR device types (TV, Air Conditioner, Light, Fan, etc.) via SwitchBot Hub",
+      "text": "Infrared Remote Devices: All IR device types (TV, Air Conditioner, Light, Fan, etc.) via SwitchBot Hub",
       "style": {
-        "lineHeight": "1.6"
+        "lineHeight": "1.6",
+        "fontWeight": "500"
       }
     },
     "_divider5": {
@@ -169,13 +173,14 @@
     },
     "_apiLimitsInfo": {
       "type": "staticText",
-      "text": "⚠️ <strong>Important:</strong> The SwitchBot API has a limit of <strong>10,000 requests per day</strong> per account. With the default poll interval of 60 seconds, this adapter will make approximately 1,440 requests per day, well within the limit. Reduce the poll interval only if necessary.",
+      "text": "⚠️ Important: The SwitchBot API has a limit of 10,000 requests per day per account. With the default poll interval of 60 seconds, this adapter will make approximately 1,440 requests per day, well within the limit. Reduce the poll interval only if necessary.",
       "style": {
         "backgroundColor": "#fff3cd",
         "padding": "15px",
         "borderRadius": "4px",
         "borderLeft": "4px solid #ffc107",
-        "lineHeight": "1.6"
+        "lineHeight": "1.6",
+        "fontWeight": "500"
       }
     }
   }

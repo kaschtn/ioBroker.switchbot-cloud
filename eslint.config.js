@@ -16,6 +16,13 @@ const compat = new FlatCompat({
 });
 
 module.exports = defineConfig([{
+    ignores: [
+        '.dev-server/**',
+        'dev-notes/**',
+        'node_modules/**',
+        '.git/**',
+    ],
+}, {
     languageOptions: {
         globals: {
             ...globals.node,

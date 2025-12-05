@@ -1,4 +1,7 @@
-# Logs
+# developer notes
+dev-notes
+
+#logs
 logs
 *.log
 npm-debug.log*
@@ -47,6 +50,9 @@ jspm_packages/
 
 # Output of 'npm pack'
 *.tgz
+
+# ioBroker dev-server
+.dev-server/
 
 # Yarn Integrity file
 .yarn-integrity
