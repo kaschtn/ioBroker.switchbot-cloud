@@ -35,7 +35,7 @@
     "@iobroker/dev-server": "^0.8.0",
     "@iobroker/testing": "^5.1.1",
     "@types/node": "^20.8.0",
-    "chai": "^4.5.0",
+    "chai": "^6.2.2",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
