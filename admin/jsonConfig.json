@@ -148,7 +148,7 @@
     },
     "_supportedDevicesPhysical": {
       "type": "staticText",
-      "text": "Physical Devices: Bot, Curtain/Curtain 3, Smart Lock/Lock Pro/Lock Ultra, Meter/Meter Plus/Meter Pro/Meter Pro (CO2), Outdoor Meter (WoIOSensor), Plug/Plug Mini (US/JP/EU), Color Bulb, Strip Light, Humidifier, Motion Sensor, Contact Sensor, "text": "Water Detector, Hub Mini, Hub Mini2, Hub 2"",
+      "text": "Physical Devices: Bot, Curtain/Curtain 3, Smart Lock/Lock Pro/Lock Ultra, Meter/Meter Plus/Meter Pro/Meter Pro (CO2), Outdoor Meter (WoIOSensor), Plug/Plug Mini (US/JP/EU), Color Bulb, Strip Light, Humidifier, Motion Sensor, Contact Sensor, Water Detector, Hub Mini, Hub Mini2, Hub 2",
       "style": {
         "marginBottom": "10px",
         "lineHeight": "1.6",
