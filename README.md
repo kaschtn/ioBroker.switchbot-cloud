@@ -252,6 +252,10 @@ Enable debug logging to get detailed information:
 
 ## Changelog
 
+
+### **WORK IN PROGRESS**
+- (ioBroker-Bot) Adapter requires admin >= 7.8.23 now.
+
 ### 0.1.0 (2025-12-01)
 - Initial release
 - SwitchBot API v1.1 support

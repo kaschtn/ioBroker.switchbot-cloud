@@ -72,8 +72,14 @@
     "adminUI": {
       "config": "json"
     },
-    "protectedNative": ["token", "secret"],
-    "encryptedNative": ["token", "secret"],
+    "protectedNative": [
+      "token",
+      "secret"
+    ],
+    "encryptedNative": [
+      "token",
+      "secret"
+    ],
     "dependencies": [
       {
         "js-controller": ">=5.0.19"
@@ -81,7 +87,7 @@
     ],
     "globalDependencies": [
       {
-        "admin": ">=5.1.13"
+        "admin": ">=7.8.23"
       }
     ]
   },
