@@ -12,6 +12,11 @@
 - (kaschtn) **FIXED**: Poll interval changes from Admin are now applied at runtime and the polling timer is restarted with the updated value.
 - (kaschtn) **ENHANCED**: Added safe startup/config-update diagnostics for effective poll interval without exposing credentials.
 
+## 0.1.9 (2026-09-05)
+
+### Fixed
+- Increased adapter startup/shutdown integration test timeouts (10s/15s → 30s) to prevent flaky failures on slower `windows-latest` CI runners.
+
 ## 0.1.8 (2026-09-05)
 
 ### Fixed

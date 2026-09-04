@@ -7,7 +7,9 @@ tests.integration(path.join(__dirname, '..'), {
     defineAdditionalTests({ suite }) {
         suite('Adapter Startup with Valid Config', (getHarness) => {
             it('Should start the adapter without errors', async function() {
-                this.timeout(10000);
+                // Windows CI runners have notably slower process spawn/kill overhead
+                // for the adapter harness, so allow more headroom than on Linux/macOS.
+                this.timeout(30000);
 
                 console.log('🔍 Step 1: Getting harness...');
                 const harness = getHarness();
@@ -74,7 +76,9 @@ tests.integration(path.join(__dirname, '..'), {
 
         suite('Adapter Startup with Missing Config', (getHarness) => {
             it('Should handle missing configuration gracefully', async function() {
-                this.timeout(15000);
+                // Windows CI runners have notably slower process spawn/kill overhead
+                // for the adapter harness, so allow more headroom than on Linux/macOS.
+                this.timeout(30000);
 
                 console.log('🔍 Test 2: Testing missing configuration handling...');
                 const harness = getHarness();

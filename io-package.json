@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "switchbot-cloud",
-    "version": "0.1.8",
+    "version": "0.1.9",
     "news": {
+      "0.1.9": {
+        "en": "Increased adapter startup/shutdown test timeouts to prevent flaky failures on slower Windows CI runners",
+        "de": "Timeouts für Adapter-Start/Stop-Tests erhöht, um instabile Fehlschläge auf langsameren Windows-CI-Runnern zu vermeiden",
+        "ru": "Увеличены таймауты тестов запуска/остановки адаптера, чтобы избежать нестабильных сбоев на более медленных Windows CI раннерах",
+        "pt": "Aumentados os tempos limite dos testes de inicialização/desligamento do adaptador para evitar falhas instaveis em runners Windows CI mais lentos",
+        "nl": "Time-outs voor adapter start/stop-tests verhoogd om instabiele mislukkingen op tragere Windows CI-runners te voorkomen",
+        "fr": "Augmentation des délais d'expiration des tests de démarrage/arrêt de l'adaptateur pour éviter les échecs instables sur les runners Windows CI plus lents",
+        "it": "Aumentati i timeout dei test di avvio/arresto dell'adattatore per evitare fallimenti instabili sui runner Windows CI più lenti",
+        "es": "Se aumentaron los tiempos de espera de las pruebas de inicio/apagado del adaptador para evitar fallos inestables en runners de Windows CI más lentos",
+        "pl": "Zwiększono limity czasu testów uruchamiania/zatrzymywania adaptera, aby zapobiec niestabilnym błędom na wolniejszych runnerach Windows CI",
+        "uk": "Збільшено таймаути тестів запуску/зупинки адаптера, щоб уникнути нестабільні збої на повільніших Windows CI раннерах",
+        "zh-cn": "增加了适配器启动/关闭测试的超时时间，以防止在较慢的 Windows CI 运行器上出现不稳定的失败"
+      },
       "0.1.8": {
         "en": "Fixed the npm Trusted Publisher workflow filename configuration to resolve release authentication failures",
         "de": "Konfiguration des npm-Trusted-Publisher-Workflow-Dateinamens korrigiert, um Authentifizierungsfehler beim Release zu beheben",
