@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "switchbot-cloud",
-    "version": "0.1.0",
+    "version": "0.1.4",
     "news": {
+      "0.1.4": {
+        "en": "Fixed runtime polling interval updates, corrected admin schema warnings, and improved release workflow stability",
+        "de": "Behoben: Laufzeit-Änderungen des Polling-Intervalls werden nun berücksichtigt, Admin-Schema-Warnungen korrigiert und Release-Workflow stabilisiert",
+        "ru": "Исправлены обновления интервала опроса во время работы, устранены предупреждения схемы администратора и улучшена стабильность релизного процесса",
+        "pt": "Correção da atualização do intervalo de polling em tempo real, correção de avisos do esquema de administração e melhoria da estabilidade do fluxo de lançamento",
+        "nl": "Vaste runtime-updates voor polling-interval, gecorrigeerde admin-schema-waarschuwingen en verbeterde release-workflowstabiliteit",
+        "fr": "Correction des mises à jour de l'intervalle de polling à l'exécution, correction des avertissements du schéma d'administration et amélioration de la stabilité du workflow de publication",
+        "it": "Corrette gli aggiornamenti dell'intervallo di polling in runtime, risolti gli avvisi dello schema admin e migliorata la stabilità del flusso di rilascio",
+        "es": "Se corrigió la actualización del intervalo de sondeo en tiempo real, se corrigieron las advertencias del esquema de administración y se mejoró la estabilidad del flujo de publicación",
+        "pl": "Naprawiono aktualizacje interwału sondowania w czasie działania, poprawiono ostrzeżenia schematu administratora i poprawiono stabilność workflow release",
+        "uk": "Виправлено оновлення інтервалу опитування під час виконання, усунено попередження схеми адміністратора та покращено стабільність релізного workflow",
+        "zh-cn": "修复了运行时轮询间隔更新问题，修正了管理界面 schema 警告，并提升了发布工作流稳定性"
+      },
       "0.1.0": {
         "en": "Initial release with SwitchBot API v1.1 support",
         "de": "Erste Veröffentlichung mit SwitchBot API v1.1 Unterstützung",

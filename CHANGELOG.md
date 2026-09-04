@@ -11,6 +11,16 @@
 - (kaschtn) **FIXED**: Poll interval changes from Admin are now applied at runtime and the polling timer is restarted with the updated value.
 - (kaschtn) **ENHANCED**: Added safe startup/config-update diagnostics for effective poll interval without exposing credentials.
 
+## 0.1.4 (2026-09-04)
+
+### Fixed
+- Corrected the release versioning and kept package metadata aligned with the release tag.
+- Ensured the runtime polling interval fix and admin schema warning fix are consistently reflected in the published adapter metadata.
+
+### Enhanced
+- Kept the develop-first dependency update workflow and release governance aligned with the current project state.
+- Refreshed the patch release metadata and changelog for the next deployment.
+
 ## 0.1.3 (2026-09-04)
 
 ### Fixed
