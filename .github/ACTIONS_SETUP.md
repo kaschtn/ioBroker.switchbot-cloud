@@ -8,6 +8,8 @@ This guide explains how to set up the required GitHub secrets for the CI/CD pipe
 
 This token is needed to publish the adapter to NPM.
 
+This repository uses the direct npm-token flow for release publication. The deploy job therefore requires an `NPM_TOKEN` repository secret.
+
 **Steps to create:**
 1. Go to [npmjs.com](https://npmjs.com) and log in
 2. Click your profile picture → "Access Tokens"
