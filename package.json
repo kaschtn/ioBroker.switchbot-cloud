@@ -20,7 +20,7 @@
     "url": "git+https://github.com/kaschtn/ioBroker.switchbot-cloud.git"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=20"
   },
   "dependencies": {
     "@iobroker/adapter-core": "^3.2.2",
