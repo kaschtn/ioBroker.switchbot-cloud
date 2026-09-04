@@ -254,7 +254,7 @@ Enable debug logging to get detailed information:
 
 
 ### **WORK IN PROGRESS**
-- (ioBroker-Bot) Adapter requires admin >= 7.8.23 now.
+- (ioBroker-Bot) Adapter requires js-controller >= 6.0.11 now.
 
 ### 0.1.0 (2025-12-01)
 - Initial release

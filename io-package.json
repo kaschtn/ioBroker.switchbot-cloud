@@ -82,12 +82,12 @@
     ],
     "dependencies": [
       {
-        "js-controller": ">=5.0.19"
+        "js-controller": ">=6.0.11"
       }
     ],
     "globalDependencies": [
       {
-        "admin": ">=7.8.23"
+        "admin": ">=5.1.13"
       }
     ]
   },
