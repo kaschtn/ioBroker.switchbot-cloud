@@ -1,9 +1,9 @@
 {
   "common": {
     "name": "switchbot-cloud",
-    "version": "0.1.4",
+    "version": "0.1.6",
     "news": {
-      "0.1.4": {
+      "0.1.6": {
         "en": "Fixed runtime polling interval updates, corrected admin schema warnings, and improved release workflow stability",
         "de": "Behoben: Laufzeit-Änderungen des Polling-Intervalls werden nun berücksichtigt, Admin-Schema-Warnungen korrigiert und Release-Workflow stabilisiert",
         "ru": "Исправлены обновления интервала опроса во время работы, устранены предупреждения схемы администратора и улучшена стабильность релизного процесса",

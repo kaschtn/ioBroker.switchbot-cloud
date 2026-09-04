@@ -7,9 +7,19 @@
 
 ## **WORK IN PROGRESS**
 
+- (kaschtn) **FIXED**: Added a release guard to ensure the Git tag matches the adapter package version before npm deploy is attempted.
 - (kaschtn) **FIXED**: Removed unsupported `required` properties from admin jsonConfig fields to resolve invalid jsonConfig warnings in admin logs.
 - (kaschtn) **FIXED**: Poll interval changes from Admin are now applied at runtime and the polling timer is restarted with the updated value.
 - (kaschtn) **ENHANCED**: Added safe startup/config-update diagnostics for effective poll interval without exposing credentials.
+
+## 0.1.6 (2026-09-05)
+
+### Fixed
+- Added a strict version/tag consistency check to the deploy workflow to stop mismatched releases before npm publish.
+- Corrected the release metadata so the package version and tag remain aligned.
+
+### Enhanced
+- Hardened the release guardrails for tag-based ioBroker/npm deployment.
 
 ## 0.1.4 (2026-09-04)
 

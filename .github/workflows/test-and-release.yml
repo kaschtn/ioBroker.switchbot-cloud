@@ -69,6 +69,35 @@ jobs:
       id-token: write      # Required for NPM provenance via OIDC
 
     steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate tag matches package version
+        shell: bash
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          if [[ "$TAG" != v* ]]; then
+            echo "::error::Expected a version tag like v1.2.3, got '$TAG'"
+            exit 1
+          fi
+
+          VERSION="${TAG#v}"
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          IO_PACKAGE_VERSION=$(node -p "require('./io-package.json').common.version")
+
+          echo "Tag version: $VERSION"
+          echo "package.json version: $PACKAGE_VERSION"
+          echo "io-package.json version: $IO_PACKAGE_VERSION"
+
+          if [[ "$VERSION" != "$PACKAGE_VERSION" ]]; then
+            echo "::error::Tag version '$VERSION' does not match package.json version '$PACKAGE_VERSION'"
+            exit 1
+          fi
+
+          if [[ "$VERSION" != "$IO_PACKAGE_VERSION" ]]; then
+            echo "::error::Tag version '$VERSION' does not match io-package.json common.version '$IO_PACKAGE_VERSION'"
+            exit 1
+          fi
+
       - uses: ioBroker/testing-action-deploy@v1
         with:
           node-version: '20.x'
