@@ -1,31 +1,60 @@
-# Dependabot configuration
-# Cooldown delays updating normal npm dependencies by 7 days but allows security updates to be processed immediately.
-# Note: Cooldown is not supported for the github-actions ecosystem.
-# Reference: https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
 version: 2
 updates:
-
-  - package-ecosystem: 'npm'
-    directory: '/'
+  # Low-risk npm updates (dev dependencies): weekly and grouped
+  - package-ecosystem: "npm"
+    directory: "/"
+    target-branch: "develop"
     schedule:
-      interval: 'monthly'
+      interval: "weekly"
+      day: "monday"
+    allow:
+      - dependency-type: "direct:development"
+    groups:
+      dev-dependencies:
+        patterns:
+          - "*"
     open-pull-requests-limit: 10
-    versioning-strategy: 'increase'
+    versioning-strategy: increase
     labels:
-      - 'dependencies'
+      - "dependencies"
+      - "bot"
+      - "automerge-candidate"
     commit-message:
-      prefix: 'chore'
-      include: 'scope'
-    cooldown:
-      default-days: 7
+      prefix: "chore"
+      include: "scope"
 
-  - package-ecosystem: 'github-actions'
-    directory: '/'
+  # Higher-risk npm updates (runtime dependencies): manual review
+  - package-ecosystem: "npm"
+    directory: "/"
+    target-branch: "develop"
     schedule:
-      interval: 'monthly'
+      interval: "monthly"
+    allow:
+      - dependency-type: "direct:production"
     labels:
-      - 'dependencies'
-      - 'github-actions'
+      - "dependencies"
+      - "bot"
+      - "manual-review"
     commit-message:
-      prefix: 'chore'
-      include: 'scope'
+      prefix: "chore"
+      include: "scope"
+
+  # Enable version updates for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    target-branch: "develop"
+    schedule:
+      interval: "monthly"
+    labels:
+      - "dependencies"
+      - "bot"
+      - "github-actions"
+      - "automerge-candidate"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
