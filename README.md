@@ -260,6 +260,8 @@ Enable debug logging to get detailed information:
 - Multi-language admin interface
 - Rate limiting and API quota management
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 
 MIT License
