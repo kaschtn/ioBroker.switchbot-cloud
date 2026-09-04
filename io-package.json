@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "switchbot-cloud",
-    "version": "0.1.6",
+    "version": "0.1.7",
     "news": {
+      "0.1.7": {
+        "en": "Restored npm Trusted Publisher release flow and removed the conflicting classic npm token deploy path",
+        "de": "Trusted-Publisher-Release-Ablauf für npm wiederhergestellt und den widersprüchlichen klassischen npm-Token-Deploy-Pfad entfernt",
+        "ru": "Восстановлен процесс выпуска через npm Trusted Publisher, удален конфликтующий классический путь развёртывания с токеном npm",
+        "pt": "Restaurado o fluxo de publicação Trusted Publisher do npm e removido o caminho de deploy conflitante com token clássico do npm",
+        "nl": "Npm Trusted Publisher-releaseflow hersteld en het conflicterende klassieke npm-token-deploypad verwijderd",
+        "fr": "Rétabli le flux de publication Trusted Publisher npm et supprimé le chemin de déploiement par jeton npm classique en conflit",
+        "it": "Ripristinato il flusso di rilascio Trusted Publisher di npm e rimosso il percorso di deploy con token npm classico in conflitto",
+        "es": "Se restauró el flujo de publicación Trusted Publisher de npm y se eliminó la ruta de despliegue con token clásico de npm en conflicto",
+        "pl": "Przywrócono przepływ publikacji npm Trusted Publisher i usunięto kolidującą ścieżkę wdrożenia z klasycznym tokenem npm",
+        "uk": "Відновлено процес публікації npm Trusted Publisher, видалено конфліктуючий класичний шлях деплою з токеном npm",
+        "zh-cn": "恢复了 npm Trusted Publisher 发布流程，并移除了冲突的经典 npm 令牌部署路径"
+      },
       "0.1.6": {
         "en": "Fixed runtime polling interval updates, corrected admin schema warnings, and improved release workflow stability",
         "de": "Behoben: Laufzeit-Änderungen des Polling-Intervalls werden nun berücksichtigt, Admin-Schema-Warnungen korrigiert und Release-Workflow stabilisiert",

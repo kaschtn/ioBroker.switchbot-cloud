@@ -12,6 +12,11 @@
 - (kaschtn) **FIXED**: Poll interval changes from Admin are now applied at runtime and the polling timer is restarted with the updated value.
 - (kaschtn) **ENHANCED**: Added safe startup/config-update diagnostics for effective poll interval without exposing credentials.
 
+## 0.1.7 (2026-09-05)
+
+### Fixed
+- Restored the npm Trusted Publisher release flow and removed the conflicting classic npm token deploy path that caused ENEEDAUTH failures.
+
 ## 0.1.6 (2026-09-05)
 
 ### Fixed
