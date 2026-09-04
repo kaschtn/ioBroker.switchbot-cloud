@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "switchbot-cloud",
-    "version": "0.1.7",
+    "version": "0.1.8",
     "news": {
+      "0.1.8": {
+        "en": "Fixed the npm Trusted Publisher workflow filename configuration to resolve release authentication failures",
+        "de": "Konfiguration des npm-Trusted-Publisher-Workflow-Dateinamens korrigiert, um Authentifizierungsfehler beim Release zu beheben",
+        "ru": "Исправлено имя файла workflow в конфигурации npm Trusted Publisher для устранения ошибок аутентификации при релизе",
+        "pt": "Corrigido o nome do arquivo de workflow na configuração do npm Trusted Publisher para resolver falhas de autenticação no lançamento",
+        "nl": "Bestandsnaam van de workflow in de npm Trusted Publisher-configuratie gecorrigeerd om releaseauthenticatiefouten op te lossen",
+        "fr": "Correction du nom de fichier du workflow dans la configuration npm Trusted Publisher pour résoudre les échecs d'authentification lors de la publication",
+        "it": "Corretto il nome del file workflow nella configurazione npm Trusted Publisher per risolvere gli errori di autenticazione al rilascio",
+        "es": "Se corrigió el nombre del archivo de workflow en la configuración de npm Trusted Publisher para resolver los fallos de autenticación en el lanzamiento",
+        "pl": "Poprawiono nazwę pliku workflow w konfiguracji npm Trusted Publisher, aby rozwiązać błędy uwierzytelniania podczas wydania",
+        "uk": "Виправлено ім'я файлу workflow у конфігурації npm Trusted Publisher для усунення помилок автентифікації під час релізу",
+        "zh-cn": "修正了 npm Trusted Publisher 配置中的工作流文件名，以解决发布时的身份验证失败问题"
+      },
       "0.1.7": {
         "en": "Restored npm Trusted Publisher release flow and removed the conflicting classic npm token deploy path",
         "de": "Trusted-Publisher-Release-Ablauf für npm wiederhergestellt und den widersprüchlichen klassischen npm-Token-Deploy-Pfad entfernt",
