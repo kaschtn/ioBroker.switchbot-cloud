@@ -252,6 +252,13 @@ Enable debug logging to get detailed information:
 
 ## Changelog
 
+### **WORK IN PROGRESS**
+- (iobroker-bot) Adapter requires node.js >= 20 now.
+
+
+### **WORK IN PROGRESS**
+- (ioBroker-Bot) Adapter requires js-controller >= 6.0.11 now.
+
 ### 0.1.0 (2025-12-01)
 - Initial release
 - SwitchBot API v1.1 support
@@ -260,11 +267,13 @@ Enable debug logging to get detailed information:
 - Multi-language admin interface
 - Rate limiting and API quota management
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 
 MIT License
 
-Copyright (c) 2024 ioBroker Community
+Copyright (c) 2024-2026 ioBroker Community
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

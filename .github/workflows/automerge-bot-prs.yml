@@ -1,0 +1,57 @@
+name: Auto-Merge Bot PRs
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - labeled
+      - ready_for_review
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  automerge-dependabot-safe:
+    if: |
+      github.event.pull_request.user.login == 'dependabot[bot]' &&
+      github.event.pull_request.draft == false
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Fetch Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Enable auto-merge for safe updates
+        if: |
+          (
+            startsWith(steps.metadata.outputs.update-type, 'version-update:semver-patch') ||
+            startsWith(steps.metadata.outputs.update-type, 'version-update:semver-minor')
+          ) &&
+          (
+            steps.metadata.outputs.dependency-type == 'direct:development' ||
+            steps.metadata.outputs.package-ecosystem == 'github_actions'
+          )
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: gh pr merge --auto --squash "$PR_URL"
+
+  automerge-iobroker-bot-labeled:
+    if: |
+      github.event.pull_request.user.login == 'iobroker-bot[bot]' &&
+      github.event.pull_request.draft == false &&
+      contains(github.event.pull_request.labels.*.name, 'bot-automerge')
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Enable auto-merge for labeled ioBroker bot PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: gh pr merge --auto --squash "$PR_URL"
