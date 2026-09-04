@@ -24,6 +24,7 @@ class SwitchBot extends utils.Adapter {
 
         this.on('ready', this.onReady.bind(this));
         this.on('stateChange', this.onStateChange.bind(this));
+        this.on('objectChange', this.onObjectChange.bind(this));
         this.on('message', this.onMessage.bind(this));
         this.on('unload', this.onUnload.bind(this));
 
@@ -32,6 +33,7 @@ class SwitchBot extends utils.Adapter {
         this.deviceManager = null;
         this.errorHandler = null;
         this.pollTimer = null;
+        this.currentPollInterval = null;
         this.isConnected = false;
         this.isShuttingDown = false;
     }
@@ -45,6 +47,12 @@ class SwitchBot extends utils.Adapter {
 
             // Reset shutdown flag
             this.isShuttingDown = false;
+
+            const startupConfigSummary = this.getConfigDebugSummary(this.config);
+            this.log.info(`Loaded config: pollIntervalRaw=${startupConfigSummary.pollIntervalRaw}, pollIntervalEffective=${startupConfigSummary.pollIntervalEffective}ms, enableCloudService=${startupConfigSummary.enableCloudService}, tokenConfigured=${startupConfigSummary.tokenConfigured}, secretConfigured=${startupConfigSummary.secretConfigured}`);
+
+            // Watch own instance object so poll interval changes in Admin are applied immediately
+            this.subscribeForeignObjects(`system.adapter.${this.namespace}`);
 
             // Initialize error handler first
             this.errorHandler = new ErrorHandler(this);
@@ -186,13 +194,51 @@ class SwitchBot extends utils.Adapter {
      * @returns {void}
      */
     startPolling() {
-        const interval = this.config.pollInterval || 60000; // Default 60 seconds
+        const interval = this.getPollIntervalFromConfig();
+
+        if (this.pollTimer) {
+            this.clearInterval(this.pollTimer);
+            this.pollTimer = null;
+        }
+
+        this.currentPollInterval = interval;
 
         this.pollTimer = this.setInterval(() => {
             this.pollDevices();
         }, interval);
 
         this.log.info(`Started polling with interval: ${interval}ms`);
+    }
+
+    /**
+     * Get validated poll interval from configuration
+     * @param {Record<string, any>} [config=this.config] - Configuration source
+     * @returns {number}
+     */
+    getPollIntervalFromConfig(config = this.config) {
+        const rawValue = config && config.pollInterval;
+        const parsedInterval = Number(rawValue);
+
+        if (Number.isInteger(parsedInterval) && parsedInterval >= 10000) {
+            return parsedInterval;
+        }
+
+        return 60000;
+    }
+
+    /**
+     * Create a safe summary of adapter configuration for troubleshooting
+     * @param {Record<string, any>} [config=this.config] - Configuration source
+     * @returns {{pollIntervalRaw: any, pollIntervalEffective: number, enableCloudService: boolean, tokenConfigured: boolean, secretConfigured: boolean}}
+     */
+    getConfigDebugSummary(config = this.config) {
+        return {
+            pollIntervalRaw: config ? config.pollInterval : undefined,
+            pollIntervalEffective: this.getPollIntervalFromConfig(config),
+            enableCloudService: !!(config && config.enableCloudService),
+            tokenConfigured: !!(config && typeof config.token === 'string' && config.token.trim().length > 0),
+            secretConfigured: !!(config && typeof config.secret === 'string' && config.secret.trim().length > 0)
+        };
     }
 
     /**
@@ -253,6 +299,39 @@ class SwitchBot extends utils.Adapter {
             } else if (error.message.includes('Invalid')) {
                 this.log.error(`Invalid command or device configuration for ${id}. Please check device settings.`);
             }
+        }
+    }
+
+    /**
+     * Handle object changes (including instance config updates)
+     * @param {string} id - Object ID
+     * @param {ioBroker.Object | null | undefined} obj - Object definition
+     */
+    async onObjectChange(id, obj) {
+        if (this.isShuttingDown) {
+            return;
+        }
+
+        const ownInstanceObjectId = `system.adapter.${this.namespace}`;
+        if (id !== ownInstanceObjectId || !obj || !obj.native) {
+            return;
+        }
+
+        const newInterval = this.getPollIntervalFromConfig(obj.native);
+        const configSummary = this.getConfigDebugSummary(obj.native);
+
+        this.log.info(`Config update detected: pollIntervalRaw=${configSummary.pollIntervalRaw}, pollIntervalEffective=${configSummary.pollIntervalEffective}ms, enableCloudService=${configSummary.enableCloudService}, tokenConfigured=${configSummary.tokenConfigured}, secretConfigured=${configSummary.secretConfigured}`);
+
+        if (newInterval === this.currentPollInterval) {
+            return;
+        }
+
+        this.config.pollInterval = newInterval;
+        this.log.info(`Polling interval changed via config update: ${newInterval}ms`);
+
+        if (this.isConnected) {
+            this.startPolling();
+            this.log.info('Polling timer restarted with updated interval');
         }
     }
 
@@ -350,6 +429,8 @@ class SwitchBot extends utils.Adapter {
                 this.clearInterval(this.pollTimer);
                 this.pollTimer = null;
             }
+
+            this.currentPollInterval = null;
 
             // Clean up error handler
             if (this.errorHandler) {

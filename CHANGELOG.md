@@ -7,6 +7,9 @@
 
 ## **WORK IN PROGRESS**
 
+- (kaschtn) **FIXED**: Removed unsupported `required` properties from admin jsonConfig fields to resolve invalid jsonConfig warnings in admin logs.
+- (kaschtn) **FIXED**: Poll interval changes from Admin are now applied at runtime and the polling timer is restarted with the updated value.
+- (kaschtn) **ENHANCED**: Added safe startup/config-update diagnostics for effective poll interval without exposing credentials.
 ## 0.1.0 (2025-12-01)
 
 ### Features
