@@ -252,8 +252,9 @@ Enable debug logging to get detailed information:
 
 ## Changelog
 
+
 ### **WORK IN PROGRESS**
-- (copilot) Adapter requires node.js >= 22 now
+- (ioBroker-Bot) Adapter requires admin >= 7.8.23 now.
 
 ### 0.1.0 (2025-12-01)
 - Initial release
