@@ -10,6 +10,19 @@
 - (kaschtn) **FIXED**: Removed unsupported `required` properties from admin jsonConfig fields to resolve invalid jsonConfig warnings in admin logs.
 - (kaschtn) **FIXED**: Poll interval changes from Admin are now applied at runtime and the polling timer is restarted with the updated value.
 - (kaschtn) **ENHANCED**: Added safe startup/config-update diagnostics for effective poll interval without exposing credentials.
+
+## 0.1.1 (2026-09-04)
+
+### Fixed
+- Fixed runtime handling of the polling interval so changes made in the Admin UI are applied without restarting the adapter.
+- Resolved invalid JSON config warnings caused by unsupported schema properties.
+- Improved configuration diagnostics to log effective values without exposing secrets.
+
+### Enhanced
+- Added a clearer develop-focused dependency update workflow and bot PR policy.
+- Updated the CI workflow to better separate develop validation from release checks.
+- Refreshed patch-level dependency versions and lockfile consistency.
+
 ## 0.1.0 (2025-12-01)
 
 ### Features
