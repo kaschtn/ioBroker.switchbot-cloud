@@ -7,6 +7,7 @@
 
 ## **WORK IN PROGRESS**
 
+- (kaschtn) **FIXED**: Moved `encryptedNative`/`protectedNative` to the top level of `io-package.json` so js-controller correctly decrypts the token/secret configuration values at runtime. Previously these were nested under `common`, where js-controller does not read them, causing every API call to fail with `401 Unauthorized` even with correct credentials (fixes #39).
 - (kaschtn) **FIXED**: Added a release guard to ensure the Git tag matches the adapter package version before npm deploy is attempted.
 - (kaschtn) **FIXED**: Removed unsupported `required` properties from admin jsonConfig fields to resolve invalid jsonConfig warnings in admin logs.
 - (kaschtn) **FIXED**: Poll interval changes from Admin are now applied at runtime and the polling timer is restarted with the updated value.
