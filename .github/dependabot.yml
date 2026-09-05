@@ -12,8 +12,13 @@ updates:
     schedule:
       interval: "weekly"
       day: "monday"
+    cooldown:
+      default-days: 7
     allow:
       - dependency-type: "direct:development"
+    ignore:
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
     groups:
       dev-dependencies:
         patterns:
@@ -34,6 +39,8 @@ updates:
     target-branch: "develop"
     schedule:
       interval: "monthly"
+    cooldown:
+      default-days: 7
     allow:
       - dependency-type: "direct:production"
     labels:

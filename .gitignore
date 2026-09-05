@@ -57,6 +57,9 @@ jspm_packages/
 # dotenv environment variables file
 .env
 
+# ioBroker release-script commit info file
+.commitinfo
+
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 .parcel-cache

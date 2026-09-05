@@ -74,7 +74,8 @@ class SwitchBot extends utils.Adapter {
                 this.api = new SwitchBotAPI({
                     token: this.config.token,
                     secret: this.config.secret,
-                    log: this.log
+                    log: this.log,
+                    adapter: this
                 });
                 this.log.debug('API client initialized');
             } catch (apiError) {
@@ -368,7 +369,8 @@ class SwitchBot extends utils.Adapter {
                     const testAPI = new SwitchBotAPI({
                         token: token.trim(),
                         secret: secret.trim(),
-                        log: this.log
+                        log: this.log,
+                        adapter: this
                     });
 
                     const devices = await testAPI.getDevices();

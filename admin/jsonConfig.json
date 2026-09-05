@@ -12,18 +12,24 @@
       "text": "Configure your SwitchBot API credentials to connect to the SwitchBot Cloud API. You can obtain these credentials from the SwitchBot mobile app.",
       "style": {
         "marginBottom": "20px"
-      }
+      },
+      "xs": 12,
+      "sm": 12,
+      "md": 12,
+      "lg": 12,
+      "xl": 12
     },
     "token": {
       "type": "text",
       "label": "Open Token",
       "placeholder": "Enter your SwitchBot API token",
       "help": "Your SwitchBot Open Token from the mobile app (required)",
-      "required": true,
       "trim": true,
+      "xs": 12,
       "sm": 12,
       "md": 12,
       "lg": 12,
+      "xl": 12,
       "validator": "data.token && data.token.length > 0",
       "validatorErrorText": "Token is required",
       "validatorNoSaveOnError": true
@@ -31,17 +37,15 @@
     "secret": {
       "type": "password",
       "label": "Secret Key",
-      "placeholder": "Enter your SwitchBot secret key",
       "help": "Your SwitchBot Secret Key from the mobile app (required)",
-      "required": true,
-      "trim": true,
+      "xs": 12,
       "sm": 12,
       "md": 12,
       "lg": 12,
+      "xl": 12,
       "validator": "data.secret && data.secret.length > 0",
       "validatorErrorText": "Secret key is required",
       "validatorNoSaveOnError": true,
-      "autoComplete": "off",
       "repeat": true
     },
     "_divider1": {
@@ -60,10 +64,11 @@
       "max": 3600000,
       "step": 1000,
       "default": 60000,
-      "required": true,
+      "xs": 12,
       "sm": 12,
       "md": 6,
       "lg": 4,
+      "xl": 4,
       "validator": "data.pollInterval >= 10000",
       "validatorErrorText": "Poll interval must be at least 10000ms (10 seconds)",
       "validatorNoSaveOnError": true
@@ -76,9 +81,11 @@
         "color": "#ff9800",
         "marginTop": "5px"
       },
+      "xs": 12,
       "sm": 12,
       "md": 6,
-      "lg": 8
+      "lg": 8,
+      "xl": 8
     },
     "_divider2": {
       "type": "divider"
