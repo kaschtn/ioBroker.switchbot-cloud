@@ -124,14 +124,6 @@
     "adminUI": {
       "config": "json"
     },
-    "protectedNative": [
-      "token",
-      "secret"
-    ],
-    "encryptedNative": [
-      "token",
-      "secret"
-    ],
     "dependencies": [
       {
         "js-controller": ">=6.0.11"
@@ -149,6 +141,14 @@
     "pollInterval": 60000,
     "enableCloudService": true
   },
+  "protectedNative": [
+    "token",
+    "secret"
+  ],
+  "encryptedNative": [
+    "token",
+    "secret"
+  ],
   "objects": [],
   "instanceObjects": [
     {
