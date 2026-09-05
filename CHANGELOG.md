@@ -4,6 +4,8 @@
   Placeholder for the next version (at the beginning of the line):
   ## **WORK IN PROGRESS**
 -->
+## **WORK IN PROGRESS**
+
 ## 0.1.10 (2026-09-05)
 
 - (kaschtn) **FIXED**: Moved `encryptedNative`/`protectedNative` to the top level of `io-package.json` so js-controller correctly decrypts the token/secret configuration values at runtime. Previously these were nested under `common`, where js-controller does not read them, causing every API call to fail with `401 Unauthorized` even with correct credentials (fixes #39).
